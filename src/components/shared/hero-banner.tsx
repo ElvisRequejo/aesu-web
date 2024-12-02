@@ -22,8 +22,8 @@ const HeroBanner = () => {
           Construyendo Futuro
         </h1>
         <p className="mx-auto mb-12 max-w-2xl text-lg text-white/80 md:text-xl">
-          Asociación de Estudiantes Superiores Udimenos, trabajando por una
-          mejor educación y representación estudiantil
+          Asociación Estudiantil Superior Udimeña, trabajando por una mejor
+          comunidad y representación estudiantil
         </p>
         <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
           <Link href="#events">

@@ -16,7 +16,7 @@ export const FAQ = () => {
     {
       question: "¿Qué es AESU y cuál es su función principal?",
       answer:
-        "AESU es la Asociación de Estudiantes Superiores Udimeños, cuya función principal es representar y defender los intereses de los estudiantes. Trabajamos para mejorar la experiencia universitaria a través de diversos programas y actividades.",
+        "AESU es la Asociación Estudiantil Superior Udimeña, cuya función principal es representar y defender los intereses de los estudiantes. Trabajamos para mejorar la experiencia universitaria a través de diversos programas y actividades.",
     },
     {
       question: "¿Cómo puedo formar parte de AESU?",

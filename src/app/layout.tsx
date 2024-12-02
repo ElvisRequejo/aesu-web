@@ -9,7 +9,7 @@ import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "AESU",
-  description: "Asociación de Estudiantes Superiores Udimeños",
+  description: "Asociación Estudiantil Superior Udimeña",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
