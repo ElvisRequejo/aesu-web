@@ -1,13 +1,17 @@
 "use client";
 
-import { api } from "~/trpc/react";
+import { api, RouterOutputs } from "~/trpc/react";
 import { FutureEventCard, PastEventCard } from "./events-card";
+
+type EventsType =
+  | RouterOutputs["event"]["getFuture"]
+  | RouterOutputs["event"]["getPast"];
 
 export const Projects = () => {
   const { data: futureEvents } = api.event.getFuture.useQuery();
   const { data: pastEvents } = api.event.getPast.useQuery();
 
-  const getGridCols = (events: typeof futureEvents | typeof pastEvents) => {
+  const getGridCols = (events: EventsType) => {
     if (!events) return "";
     switch (events.length) {
       case 1:
@@ -17,7 +21,6 @@ export const Projects = () => {
         return "grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto";
     }
   };
-
   return (
     <section className="py-20" id="events">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

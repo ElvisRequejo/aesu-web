@@ -1,14 +1,19 @@
 import { Facebook, Mail } from "lucide-react";
-
-const CURRENT_YEAR = new Date().getFullYear();
+import { useEffect, useState } from "react";
 
 export const Footer = () => {
+  const [year, setYear] = useState("");
+
+  useEffect(() => {
+    setYear(new Date().getFullYear().toString());
+  }, []);
+
   return (
     <footer className="border-t bg-white">
       <div className="mx-auto max-w-7xl px-4 py-6">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="text-sm text-gray-600">
-            © {CURRENT_YEAR} AESU. Todos los derechos reservados.
+            © {year || "2024"} AESU. Todos los derechos reservados.
           </div>
           <div className="flex space-x-4">
             <a

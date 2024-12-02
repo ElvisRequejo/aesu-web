@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Eventos", path: "#events" },
@@ -45,7 +54,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative z-50 text-gray-600 hover:text-blue-600 md:hidden"
+              className="relative z-[60] text-gray-200 hover:text-blue-600 md:hidden"
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             >
               <div className={`relative h-6 w-6 transition-all duration-300`}>
@@ -73,9 +82,9 @@ const Header = () => {
         <div
           className={`${
             isOpen ? "translate-x-0" : "translate-x-full"
-          } fixed inset-0 z-40 bg-white transition-transform duration-300 ease-in-out md:hidden`}
+          } fixed inset-0 z-[55] h-screen w-full bg-gray-900/95 backdrop-blur-md transition-transform duration-300 ease-in-out md:hidden`}
         >
-          <div className="flex h-full flex-col space-y-6 px-4 pt-20">
+          <div className="flex h-full flex-col items-center justify-center space-y-8 px-4">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -84,8 +93,8 @@ const Header = () => {
                 className={`${
                   isActive(item.path)
                     ? "font-medium text-blue-600"
-                    : "text-gray-600"
-                } text-center text-2xl`}
+                    : "text-white hover:text-blue-400"
+                } text-center text-3xl`}
               >
                 {item.name}
               </Link>

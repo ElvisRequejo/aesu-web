@@ -52,7 +52,7 @@ export function CreateEventForm() {
   }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
+    const files = Array.from(e.target.files ?? []);
 
     // Validar número máximo de archivos
     if (selectedFiles.length + files.length > 10) {
@@ -156,11 +156,11 @@ export function CreateEventForm() {
 
       const eventData = {
         title: formData.get("title") as string,
-        subtitle: (formData.get("subtitle") as string) || null,
-        description: (formData.get("description") as string) || null,
-        date: (formData.get("date") as string) || null,
-        time: (formData.get("time") as string) || null,
-        location: (formData.get("location") as string) || null,
+        subtitle: (formData.get("subtitle") as string) ?? null,
+        description: (formData.get("description") as string) ?? null,
+        date: (formData.get("date") as string) ?? null,
+        time: (formData.get("time") as string) ?? null,
+        location: (formData.get("location") as string) ?? null,
         isPast,
         images: imageUrls,
         createdById: session.user.id,
@@ -169,13 +169,13 @@ export function CreateEventForm() {
       if (isPast) {
         await createEvent.mutateAsync({
           ...eventData,
-          results: (formData.get("results") as string) || null,
+          results: (formData.get("results") as string) ?? null,
         });
       } else {
         await createEvent.mutateAsync({
           ...eventData,
-          platform: (formData.get("platform") as string) || null,
-          link: (formData.get("link") as string) || null,
+          platform: (formData.get("platform") as string) ?? null,
+          link: (formData.get("link") as string) ?? null,
         });
       }
     } catch (err) {
