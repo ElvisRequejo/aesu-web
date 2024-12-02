@@ -13,12 +13,10 @@ export const CustomLayout: React.FC<MainLayoutProps> = ({
   bg = "primary" as "primary" | "secondary" | "white",
 }) => {
   return (
-    <div className={`flex h-screen bg-bg-${bg} overflow-hidden`}>
-      <div className="flex flex-1 flex-col">
-        <Header />
-        <main className="flex-1 overflow-auto">{children}</main>
-        <Footer />
-      </div>
+    <div>
+      <Header />
+      <main className="flex-1 overflow-auto">{children}</main>
+      <Footer />
     </div>
   );
 };

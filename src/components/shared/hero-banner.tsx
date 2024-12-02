@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroBanner = () => {
   return (
@@ -25,11 +26,15 @@ const HeroBanner = () => {
           mejor educación y representación estudiantil
         </p>
         <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
-          <button className="max-w-[200px] rounded-full bg-blue-600 px-8 py-3 text-white transition-colors hover:bg-blue-700">
-            Conoce Más
-          </button>
+          <Link href="#events">
+            <button className="max-w-[200px] rounded-full bg-blue-600 px-8 py-3 text-white transition-colors hover:bg-blue-700">
+              Conoce Más
+            </button>
+          </Link>
           <button className="max-w-[200px] rounded-full border border-white px-8 py-3 text-white transition-colors hover:bg-white/10">
-            Únete a AESU
+            <Link href="https://forms.gle/cGjqfc6JD5DEo8U98" target="_blank">
+              Únete a AESU
+            </Link>
           </button>
         </div>
       </div>
