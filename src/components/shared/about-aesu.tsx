@@ -15,7 +15,7 @@ export const AboutAesu = () => {
     <div className="relative bg-[#2563EB]" id="about-aesu">
       {/* Imagen de fondo */}
       {/* <div className="absolute inset-0">
-        <img
+        <Image
           src="/bosques-nublados.jpg" // Asegúrate de tener esta imagen en tu proyecto
           alt="Background"
           className="h-full w-full object-cover"

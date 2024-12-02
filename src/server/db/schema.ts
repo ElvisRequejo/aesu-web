@@ -1,9 +1,7 @@
 import { relations, sql } from "drizzle-orm";
 import {
   index,
-  integer,
   pgTableCreator,
-  primaryKey,
   text,
   timestamp,
   varchar,

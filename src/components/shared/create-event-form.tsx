@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import { X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
+import Image from "next/image";
 
 export function CreateEventForm() {
   const { data: session, status } = useSession();
@@ -106,7 +107,7 @@ export function CreateEventForm() {
         }
 
         // Intentar subir el archivo
-        const { data, error } = await supabase.storage
+        const { error } = await supabase.storage
           .from("event-images")
           .upload(fileName, file, {
             cacheControl: "3600",
@@ -281,10 +282,12 @@ export function CreateEventForm() {
               <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
                 {previewUrls.map((url, index) => (
                   <div key={url} className="group relative">
-                    <img
+                    <Image
                       src={url}
                       alt={`Preview ${index + 1}`}
                       className="h-24 w-full rounded object-cover"
+                      width={200}
+                      height={200}
                     />
                     <button
                       type="button"

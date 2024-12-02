@@ -42,7 +42,7 @@ export default function LoginPage() {
 
       if (result?.ok) {
         console.log("Autenticación exitosa, redirigiendo...");
-        await router.push("/admin");
+        router.push("/admin"); // Eliminado el await
       }
     } catch (err) {
       console.error("Error inesperado:", err);

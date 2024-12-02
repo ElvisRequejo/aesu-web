@@ -1,24 +1,12 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { api } from "~/trpc/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { CreateEventForm } from "~/app/_components/create-event-form";
-import { EventsTable } from "~/app/_components/events-table";
-import { AdminHeader } from "~/app/_components/header-admin";
+import { CreateEventForm } from "~/components/shared/create-event-form";
+import { EventsTable } from "~/components/shared/events-table";
+import { AdminHeader } from "~/components/shared/header-admin";
 
 export default function AdminPage() {
-  const { data: session, status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      window.location.href = "/login";
-    },
-  });
-
-  if (status === "loading") {
-    return <div>Cargando...</div>;
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
       <AdminHeader />

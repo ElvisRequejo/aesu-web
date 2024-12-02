@@ -1,13 +1,12 @@
 "use client";
 
-import { api, RouterOutputs } from "~/trpc/react";
+import { api } from "~/trpc/react";
+import type { RouterOutputs } from "~/trpc/react";
 import { FutureEventCard, PastEventCard } from "./events-card";
 
-type EventsType =
-  | RouterOutputs["event"]["getFuture"]
-  | RouterOutputs["event"]["getPast"];
+type EventsType = RouterOutputs["event"]["getFuture"];
 
-export const Projects = () => {
+export const Events = () => {
   const { data: futureEvents } = api.event.getFuture.useQuery();
   const { data: pastEvents } = api.event.getPast.useQuery();
 
@@ -21,6 +20,7 @@ export const Projects = () => {
         return "grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto";
     }
   };
+
   return (
     <section className="py-20" id="events">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

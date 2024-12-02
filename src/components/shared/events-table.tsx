@@ -46,7 +46,7 @@ export function EventsTable({ isPast }: { isPast: boolean }) {
             <TableCell>
               {event.date ? new Date(event.date).toLocaleDateString() : "N/A"}
             </TableCell>
-            <TableCell>{event.location || "N/A"}</TableCell>
+            <TableCell>{event.location ?? "N/A"}</TableCell>
             <TableCell>
               <Button
                 variant="destructive"

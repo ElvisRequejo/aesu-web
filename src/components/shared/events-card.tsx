@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { Event } from "~/server/db/schema";
 import { api } from "~/trpc/server";
+import Image from "next/image";
 
 // Las props de los componentes con su tipo
 interface EventCardProps {
@@ -22,16 +23,18 @@ export const FutureEventCard = ({ event }: EventCardProps) => {
     <Card className="group overflow-hidden bg-[#1f2122]">
       <div className="relative aspect-[5/3] overflow-hidden">
         {event.images?.[0] && (
-          <img
+          <Image
             src={event.images[0]}
             alt={event.title}
             className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            width={1920}
+            height={1080}
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70" />
       </div>
 
-      <CardHeader className="xs:-mt-16 relative -mt-20 sm:-mt-16 md:-mt-20 lg:-mt-16">
+      <CardHeader className="relative -mt-20 xs:-mt-16 sm:-mt-16 md:-mt-20 lg:-mt-16">
         <CardTitle className="text-xl font-semibold leading-5 text-white">
           {event.title}
         </CardTitle>
@@ -114,11 +117,17 @@ export const PastEventCard = ({ event }: EventCardProps) => {
       <div className="relative h-48">
         {event.images && event.images.length > 0 && (
           <>
-            <img
-              src={event.images[currentImage]}
-              alt={`${event.title} - imagen ${currentImage + 1}`}
-              className="h-full w-full object-cover"
-            />
+            {event.images?.[currentImage] ? (
+              <Image
+                src={event.images[currentImage]}
+                alt={`${event.title} - imagen ${currentImage + 1}`}
+                className="h-full w-full object-cover"
+                width={1920}
+                height={1080}
+              />
+            ) : (
+              <div className="h-full w-full bg-gray-200" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70" />
 
             {event.images.length > 1 && (
